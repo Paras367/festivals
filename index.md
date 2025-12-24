@@ -84,13 +84,6 @@ A modern showcase of **Indian festivals** with interactive visuals and installab
 
 ---
 
-## 💡 Notes
-
-> ⚠️ Markdown pages cannot run advanced JS (fireworks, sliders, theme toggle) or Tailwind animations.  
-> This page simulates a rich layout using HTML inside Markdown and inline CSS.
-
----
-
 <footer style="text-align:center; margin-top:2rem; opacity:0.7;">
 © 2025 FestivalVerse • Built by **CyberVex (Paras Dhiman)**
 </footer>
