@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FestivalVerse | Explore Indian & World Festivals</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FestivalVerse – Explore beautiful festival webpages for Diwali, Holi, Eid, Christmas and more.">
+    <meta name="keywords" content="INDEX HTML Festival Pages">
+    <meta name="author" content="CyberVex(Paras Dhiman)">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #111827;
+            --text: #e5e7eb;
+            --accent: #38bdf8;
+        }
+
+        body.light {
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text: #020617;
+            --accent: #2563eb;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            transition: 0.4s;
+        }
+
+        /* Scroll Progress */
+        #progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--accent);
+            width: 0%;
+            z-index: 1000;
+        }
+
+        header {
+            padding: 1.2rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            background: rgba(0,0,0,0.4);
+            backdrop-filter: blur(10px);
+            z-index: 999;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        nav a {
+            margin: 0 1rem;
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--accent);
+        }
+
+        .toggle {
+            cursor: pointer;
+            padding: 6px 12px;
+            border-radius: 20px;
+            border: 1px solid var(--accent);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 5rem 1rem;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            opacity: 0.8;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .search-box {
+            margin: 2rem auto;
+            max-width: 400px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+
+        .card {
+            background: var(--card);
+            padding: 1.5rem;
+            border-radius: 15px;
+            transition: 0.3s;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            opacity: 0.85;
+        }
+
+        .card a {
+            display: inline-block;
+            margin-top: 1rem;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div id="progress"></div>
+
+<header>
+    <h1>🎉 FestivalVerse</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#festivals">Festivals</a>
+        <a href="https://github.com/" target="_blank">GitHub</a>
+    </nav>
+    <div class="toggle" onclick="toggleTheme()">🌗</div>
+</header>
+
+<section class="hero">
+    <h2>Celebrate Every Festival</h2>
+    <p>A beautiful collection of festival webpages crafted using pure HTML, CSS & JS.</p>
+
+    <div class="search-box">
+        <input type="text" id="search" placeholder="Search festival..." onkeyup="filterCards()">
+    </div>
+</section>
+
+<section id="festivals" class="grid">
+
+    <div class="card">
+        <h3>🪔 Diwali</h3>
+        <p>Festival of Lights, prosperity and happiness.</p>
+        <a href="festivals/diwali.html">Explore →</a>
+    </div>
+
+    <div class="card">
+        <h3>🎨 Holi</h3>
+        <p>Festival of colors, joy and unity.</p>
+        <a href="festivals/holi.html">Explore →</a>
+    </div>
+
+    <div class="card">
+        <h3>🌙 Eid</h3>
+        <p>Festival of peace, prayers and togetherness.</p>
+        <a href="festivals/eid.html">Explore →</a>
+    </div>
+
+    <div class="card">
+        <h3>🎄 Christmas</h3>
+        <p>Festival of love, joy and giving.</p>
+        <a href="festivals/christmas.html">Explore →</a>
+    </div>
+
+</section>
+
+<footer>
+    © 2025 FestivalVerse | Created by CyberVex
+</footer>
+
+<script>
+    function toggleTheme() {
+        document.body.classList.toggle("light");
+    }
+
+    function filterCards() {
+        let input = document.getElementById("search").value.toLowerCase();
+        let cards = document.querySelectorAll(".card");
+
+        cards.forEach(card => {
+            let title = card.querySelector("h3").innerText.toLowerCase();
+            card.style.display = title.includes(input) ? "block" : "none";
+        });
+    }
+
+    window.onscroll = () => {
+        let winScroll = document.documentElement.scrollTop;
+        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        document.getElementById("progress").style.width = (winScroll / height) * 100 + "%";
+    };
+</script>
+
+</body>
+</html>
