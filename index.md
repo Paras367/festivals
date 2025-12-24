@@ -5,10 +5,10 @@ description: Explore Indian festivals with interactive visuals and PWA support.
 ---
 
 <!-- Link custom CSS -->
-<link rel="stylesheet" href="/assets/css/style.css">
+<link rel="stylesheet" href="..festivals/assets/css/style.css">
 
 <!-- Link custom JS -->
-<script src="/assets/js/scale.fix.js"></script>
+<script src="..festivals/assets/js/scale.fix.js"></script>
 
 <!-- Dark Theme Wrapper -->
 <div style="background:#0f172a; color:#e5e7eb; min-height:100vh; padding:2rem; font-family:Poppins, sans-serif;">
