@@ -6,10 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- SEO -->
-<meta name="description" content="Explore Indian festivals with countdowns, music, fireworks and PWA support.">
+<meta name="description" content="Explore Indian festivals with interactive visuals and PWA support.">
 <meta name="author" content="CyberVex(Paras Dhiman)">
 
-<!-- ✅ FAVICON -->
+<!--  FAVICON -->
 <link rel="apple-touch-icon" href="https://services.india.gov.in/assets/images/favicon/apple-touch-icon.png">
 <link rel="icon" href="https://services.india.gov.in/assets/images/favicon/favicon.png" />
 
@@ -46,19 +46,37 @@ header{
 }
 header img{height:40px}
 
-.toggle{cursor:pointer;border:1px solid var(--accent);padding:6px 12px;border-radius:20px}
+.toggle{
+  cursor:pointer;
+  border:1px solid var(--accent);
+  padding:6px 12px;
+  border-radius:20px;
+}
 
-.hero{text-align:center;padding:4rem 1rem}
-.hero h1{font-size:3rem;color:var(--accent)}
-.hero p{opacity:.8;max-width:700px;margin:auto}
+.hero{
+  text-align:center;
+  padding:4rem 1rem;
+}
+.hero h1{
+  font-size:3rem;
+  color:var(--accent);
+}
+.hero p{
+  opacity:.8;
+  max-width:700px;
+  margin:auto;
+}
 
-.controls{margin-top:1.5rem}
+.controls{
+  margin-top:1.5rem;
+}
 .controls button{
-  margin:.4rem;
-  padding:.6rem 1rem;
-  border:none;border-radius:8px;
+  padding:.7rem 1.2rem;
+  border:none;
+  border-radius:8px;
   background:var(--accent);
-  cursor:pointer;font-weight:500;
+  cursor:pointer;
+  font-weight:500;
 }
 
 .grid{
@@ -73,11 +91,17 @@ header img{height:40px}
   padding:1.5rem;
   border-radius:15px;
   box-shadow:0 15px 30px rgba(0,0,0,.4);
+  transition:.3s;
+}
+.card:hover{
+  transform:translateY(-8px);
 }
 
-.countdown{margin-top:.8rem;font-weight:500;color:var(--accent)}
-
-footer{text-align:center;padding:2rem;opacity:.6}
+footer{
+  text-align:center;
+  padding:2rem;
+  opacity:.6;
+}
 
 canvas{
   position:fixed;
@@ -100,11 +124,10 @@ canvas{
 
 <section class="hero">
   <h1>🎉 FestivalVerse</h1>
-  <p>Celebrate Indian festivals with countdowns, music, fireworks & PWA experience.</p>
+  <p>A modern showcase of Indian festivals with interactive visuals and installable app support.</p>
 
   <div class="controls">
-    <button onclick="toggleMusic()">🎵 Music</button>
-    <button onclick="fireworks()">🎆 Fireworks</button>
+    <button onclick="fireworks()">🎆 Celebrate</button>
   </div>
 </section>
 
@@ -112,20 +135,22 @@ canvas{
 
   <div class="card">
     <h3>🪔 Diwali</h3>
-    <p>Festival of Lights</p>
-    <div class="countdown" id="diwali"></div>
+    <p>Festival of Lights symbolizing victory of good over evil.</p>
   </div>
 
   <div class="card">
     <h3>🎨 Holi</h3>
-    <p>Festival of Colors</p>
-    <div class="countdown" id="holi"></div>
+    <p>Festival of Colors celebrating joy and togetherness.</p>
   </div>
 
   <div class="card">
     <h3>🌙 Eid</h3>
-    <p>Festival of Peace</p>
-    <div class="countdown" id="eid"></div>
+    <p>Festival of peace, gratitude, and community.</p>
+  </div>
+
+  <div class="card">
+    <h3>🎄 Christmas</h3>
+    <p>Festival of love, giving, and joy.</p>
   </div>
 
 </section>
@@ -134,54 +159,39 @@ canvas{
 © 2025 FestivalVerse • Built by CyberVex(Paras Dhiman)
 </footer>
 
-<!-- 🎵 MUSIC -->
-<audio id="bgm" loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_47d52f1a98.mp3" type="audio/mpeg">
-</audio>
-
 <script>
 // THEME
-function toggleTheme(){document.body.classList.toggle("light")}
-
-// MUSIC
-const music=document.getElementById("bgm")
-function toggleMusic(){music.paused?music.play():music.pause()}
-
-// FESTIVAL CALENDAR
-const festivals={
- diwali:"2025-10-20",
- holi:"2026-03-04",
- eid:"2026-03-20"
+function toggleTheme(){
+  document.body.classList.toggle("light")
 }
 
-function updateCountdown(){
- const now=new Date()
- for(let f in festivals){
-  const diff=new Date(festivals[f])-now
-  const d=Math.floor(diff/86400000)
-  document.getElementById(f).innerText=
-    d>0?`⏳ ${d} days left`:"🎉 Today!"
- }
-}
-setInterval(updateCountdown,1000)
-updateCountdown()
-
-// FIREWORKS
+// FIREWORKS / CONFETTI
 const canvas=document.getElementById("fx")
 const ctx=canvas.getContext("2d")
-canvas.width=innerWidth
-canvas.height=innerHeight
+function resize(){
+ canvas.width=innerWidth
+ canvas.height=innerHeight
+}
+resize()
+addEventListener("resize",resize)
+
 function fireworks(){
- for(let i=0;i<200;i++){
+ for(let i=0;i<250;i++){
   ctx.fillStyle=`hsl(${Math.random()*360},100%,50%)`
   ctx.beginPath()
-  ctx.arc(Math.random()*canvas.width,Math.random()*canvas.height,3,0,Math.PI*2)
+  ctx.arc(
+    Math.random()*canvas.width,
+    Math.random()*canvas.height,
+    3,
+    0,
+    Math.PI*2
+  )
   ctx.fill()
  }
  setTimeout(()=>ctx.clearRect(0,0,canvas.width,canvas.height),1200)
 }
 
-// PWA SW
+// PWA
 if("serviceWorker" in navigator){
  navigator.serviceWorker.register("service-worker.js")
 }
