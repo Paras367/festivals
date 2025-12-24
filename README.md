@@ -17,23 +17,6 @@
 - 🇮🇳 **Gov-style favicon & branding support**
 - 🧑‍🎓 **Student / NSS / Portfolio friendly**
 
----
-
-## 📁 Project Directory Structure
-
-festivals/
-│
-├── index.html # Main landing page
-├── manifest.json # PWA manifest
-├── service-worker.js # Offline caching
-├── README.md # Project documentation
-|── Others...
-│
-|
-└── assets/ # (Optional future use)
-├── images/
-└── icons/
-
 
 ---
 
@@ -89,7 +72,7 @@ No backend. No frameworks. 100% static & fast.
 ## 🎓 Use Cases
 
 - School / College Project
-- NSS / Social Awareness Website
+- Social Awareness Website
 - Festival Information Portal
 - Portfolio Website
 - HTML / CSS / JS Learning Project
