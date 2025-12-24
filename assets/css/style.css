@@ -1,0 +1,109 @@
+/* ===== Base Styles ===== */
+body {
+    background-color: #0f172a;
+    color: #e5e7eb;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Headings ===== */
+h1, h2, h3, h4, h5, h6 {
+    color: #38bdf8;
+    margin-bottom: 0.5rem;
+}
+
+/* ===== Links / Buttons ===== */
+a {
+    color: #38bdf8;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: #facc15;
+}
+
+a.button {
+    background-color: #38bdf8;
+    color: #0f172a !important;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 0.2rem;
+    text-align: center;
+    transition: 0.3s;
+}
+
+a.button:hover {
+    background-color: #facc15;
+    color: #111827 !important;
+}
+
+/* ===== Card Styles ===== */
+div.card {
+    background-color: #111827;
+    border-radius: 15px;
+    padding: 1rem;
+    width: 250px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 2rem;
+}
+
+div.card img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+div.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.6);
+}
+
+/* ===== Grid / Flex Layout ===== */
+div.grid, div.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+/* ===== Glowing Text Animation ===== */
+.glow-text {
+    text-align: center;
+    animation: glow 1.5s infinite alternate;
+    font-size: 1.5rem;
+}
+
+@keyframes glow {
+    0% { color: #38bdf8; }
+    50% { color: #facc15; }
+    100% { color: #38bdf8; }
+}
+
+/* ===== Footer ===== */
+footer {
+    text-align: center;
+    margin-top: 2rem;
+    opacity: 0.7;
+    font-size: 0.9rem;
+}
+
+/* ===== Quick Links Container ===== */
+div.quick-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    div.card {
+        width: 90%;
+    }
+}
