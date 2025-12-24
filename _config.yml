@@ -1,0 +1,36 @@
+# Site settings
+title: FestivalVerse | Festivals of India
+description: Explore Indian festivals with interactive visuals and installable app support.
+author: CyberVex (Paras Dhiman)
+baseurl: ""       # Leave blank if site is at root
+url: "https://paras367.github.io/festivals"  # Your GitHub Pages URL
+
+# Theme settings
+theme: jekyll-theme-minimal
+
+# Social / SEO (optional)
+twitter_username: your_twitter_handle
+github_username: Paras367
+
+# Defaults for pages
+defaults:
+  -
+    scope:
+      path: ""       # Applies to all files
+      type: "pages"
+    values:
+      layout: default
+      author: CyberVex
+
+# Markdown options
+markdown: kramdown
+highlighter: rouge
+
+# Include extra files
+include:
+  - manifest.json
+  - assets
+  - festivals
+
+# PWA support (optional)
+# If you have service worker or manifest.json
