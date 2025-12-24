@@ -4,6 +4,12 @@ layout: default
 description: Explore Indian festivals with interactive visuals and PWA support.
 ---
 
+<!-- Link custom CSS -->
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<!-- Link custom JS -->
+<script src="/assets/js/scale.fix.js"></script>
+
 <!-- Dark Theme Wrapper -->
 <div style="background:#0f172a; color:#e5e7eb; min-height:100vh; padding:2rem; font-family:Poppins, sans-serif;">
 
@@ -21,29 +27,29 @@ A modern showcase of **Indian festivals** with interactive visuals and installab
 ## 🌟 Featured Festivals
 
 <!-- Grid using HTML inside Markdown -->
-<div style="display:flex; flex-wrap:wrap; justify-content:space-around; gap:2rem; margin-top:2rem;">
+<div class="grid">
 
-<div style="background:#111827; padding:1rem; border-radius:15px; width:250px; box-shadow:0 10px 20px rgba(0,0,0,0.4);">
+<div class="card">
   
-  <h3 style="color:#38bdf8; margin-top:0.5rem;">🪔 Diwali</h3>
+  <h3>🪔 Diwali</h3>
   <p>Festival of Lights symbolizing victory of good over evil.</p>
 </div>
 
-<div style="background:#111827; padding:1rem; border-radius:15px; width:250px; box-shadow:0 10px 20px rgba(0,0,0,0.4);">
+<div class="card">
   
-  <h3 style="color:#38bdf8; margin-top:0.5rem;">🎨 Holi</h3>
+  <h3>🎨 Holi</h3>
   <p>Festival of Colors celebrating joy and togetherness.</p>
 </div>
 
-<div style="background:#111827; padding:1rem; border-radius:15px; width:250px; box-shadow:0 10px 20px rgba(0,0,0,0.4);">
+<div class="card">
   
-  <h3 style="color:#38bdf8; margin-top:0.5rem;">🌙 Eid</h3>
+  <h3>🌙 Eid</h3>
   <p>Festival of peace, gratitude, and community.</p>
 </div>
 
-<div style="background:#111827; padding:1rem; border-radius:15px; width:250px; box-shadow:0 10px 20px rgba(0,0,0,0.4);">
- 
-  <h3 style="color:#38bdf8; margin-top:0.5rem;">🎄 Christmas</h3>
+<div class="card">
+  
+  <h3>🎄 Christmas</h3>
   <p>Festival of love, giving, and joy.</p>
 </div>
 
@@ -61,33 +67,23 @@ A modern showcase of **Indian festivals** with interactive visuals and installab
 
 ## 🔔 Mini Animations
 
-<p style="text-align:center; animation: glow 1.5s infinite alternate; font-size:1.5rem;">
+<p class="glow-text">
   🌟✨ Enjoy the Festivals! ✨🌟
 </p>
 
-<style>
-@keyframes glow {
-  0% { color: #38bdf8; }
-  50% { color: #facc15; }
-  100% { color: #38bdf8; }
-}
-</style>
-
 ---
 
-## 📌 Quick Links
+## 🎆 Celebrate Button
 
-<div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center; margin-top:1rem;">
-<a href="diwali.md" style="padding:0.5rem 1rem; background:#38bdf8; color:#0f172a; border-radius:10px; text-decoration:none;">🪔 Diwali</a>
-<a href="holi.md" style="padding:0.5rem 1rem; background:#38bdf8; color:#0f172a; border-radius:10px; text-decoration:none;">🎨 Holi</a>
-<a href="eid.md" style="padding:0.5rem 1rem; background:#38bdf8; color:#0f172a; border-radius:10px; text-decoration:none;">🌙 Eid</a>
-<a href="christmas.md" style="padding:0.5rem 1rem; background:#38bdf8; color:#0f172a; border-radius:10px; text-decoration:none;">🎄 Christmas</a>
-<a href="security.md" style="padding:0.5rem 1rem; background:#38bdf8; color:#0f172a; border-radius:10px; text-decoration:none;">🛡 Security</a>
+<div style="text-align:center; margin-top:2rem;">
+  <button onclick="fireworks()" style="padding:0.5rem 1rem; background:#38bdf8; color:#0f172a; border:none; border-radius:10px; cursor:pointer;">
+    🎆 Celebrate!
+  </button>
 </div>
 
 ---
 
-<footer style="text-align:center; margin-top:2rem; opacity:0.7;">
+<footer>
 © 2025 FestivalVerse • Built by **CyberVex (Paras Dhiman)**
 </footer>
 
