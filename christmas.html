@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Christmas | FestivalVerse</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- SEO -->
+<meta name="description" content="Christmas festival page with glassmorphism, snowfall slider and PWA support.">
+<meta name="author" content="CyberVex(Paras)">
+
+<!-- FAVICON -->
+<link rel="apple-touch-icon" href="https://services.india.gov.in/assets/images/favicon/apple-touch-icon.png">
+<link rel="icon" href="https://services.india.gov.in/assets/images/favicon/favicon.png" />
+
+<!--  PWA  -->
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#0f172a">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+/* Glassmorphism */
+.glass {
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,0.25);
+}
+
+/* Snow Canvas */
+canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+}
+</style>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white overflow-x-hidden">
+
+<canvas id="snow"></canvas>
+
+<!-- HEADER -->
+<header class="flex items-center justify-between px-6 py-4 glass sticky top-0 z-40">
+  <h1 class="text-2xl font-bold tracking-wide">🎄 Christmas</h1>
+  <a href="../index.html" class="text-sm px-4 py-2 rounded-lg bg-white/20 hover:bg-white/30 transition">
+    ← Back
+  </a>
+</header>
+
+<!-- HERO -->
+<section class="text-center py-20 px-4">
+  <h2 class="text-5xl font-extrabold mb-4 drop-shadow-lg">
+    Merry Christmas
+  </h2>
+  <p class="max-w-2xl mx-auto text-white/80 text-lg">
+    Christmas celebrates love, kindness and togetherness. Experience the joy with interactive snowfall and glass UI.
+  </p>
+</section>
+
+<!-- GLASS CARD -->
+<section class="max-w-3xl mx-auto px-4">
+  <div class="glass rounded-2xl p-8 shadow-2xl">
+    <h3 class="text-2xl font-semibold mb-4">❄️ Snowfall Controller</h3>
+    <p class="text-white/70 mb-6">
+      Use the slider to control snowfall intensity.
+    </p>
+
+    <!-- GLASS SLIDER -->
+    <input
+      type="range"
+      min="20"
+      max="300"
+      value="120"
+      id="snowRange"
+      class="w-full accent-white cursor-pointer"
+    />
+
+    <div class="mt-6 grid grid-cols-2 gap-4 text-sm text-white/80">
+      <div class="glass rounded-xl p-4">
+        🎁 Traditions<br>
+        Gifts, trees, lights, and carols
+      </div>
+      <div class="glass rounded-xl p-4">
+        🕊️ Message<br>
+        Peace, love, and generosity
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="text-center mt-20 py-6 text-white/60 text-sm">
+  © 2025 FestivalVerse • Christmas Page by CyberVex(Paras Dhiman)
+</footer>
+
+<!-- ❄️ SNOWFALL JS -->
+<script>
+const canvas = document.getElementById("snow")
+const ctx = canvas.getContext("2d")
+let flakes = []
+let flakeCount = 120
+
+function resize(){
+  canvas.width = innerWidth
+  canvas.height = innerHeight
+}
+resize()
+addEventListener("resize", resize)
+
+function createFlakes(){
+  flakes = []
+  for(let i=0;i<flakeCount;i++){
+    flakes.push({
+      x: Math.random()*canvas.width,
+      y: Math.random()*canvas.height,
+      r: Math.random()*3 + 1,
+      d: Math.random() + 0.5
+    })
+  }
+}
+createFlakes()
+
+function drawSnow(){
+  ctx.clearRect(0,0,canvas.width,canvas.height)
+  ctx.fillStyle="rgba(255,255,255,0.9)"
+  ctx.beginPath()
+  flakes.forEach(f=>{
+    ctx.moveTo(f.x,f.y)
+    ctx.arc(f.x,f.y,f.r,0,Math.PI*2)
+  })
+  ctx.fill()
+  updateSnow()
+}
+
+function updateSnow(){
+  flakes.forEach(f=>{
+    f.y += f.d
+    if(f.y > canvas.height){
+      f.y = -10
+      f.x = Math.random()*canvas.width
+    }
+  })
+}
+
+setInterval(drawSnow, 33)
+
+// 🎚️ SLIDER CONTROL
+document.getElementById("snowRange").addEventListener("input", e=>{
+  flakeCount = e.target.value
+  createFlakes()
+})
+
+// PWA
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("../service-worker.js")
+}
+</script>
+
+</body>
+</html>
