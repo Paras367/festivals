@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Gurpurab | Sikh Heritage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<!-- ===== FAVICON: EK ONKAR INLINE SVG ===== -->
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHRleHQgeD0iNTAlIiB5PSI1NSUiIGZvbnQtc2l6ZT0iNTAlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjZjllYWMxNSIgZm9udC1mYW1pbHk9InNlcmlmIj7CuqPC90ZXh0Pjwvc3ZnPg==">
+
+<!-- ===== GOOGLE FONTS ===== -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Montserrat&family=Open+Sans&family=Roboto&family=Lora&family=Merriweather&family=Playfair+Display&family=Raleway&family=Noto+Serif&family=Crimson+Text&family=Ubuntu&family=Inter&display=swap" rel="stylesheet">
+
+<!-- ===== TAILWIND CSS CDN ===== -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- ===== FONT AWESOME ===== -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-p6V+K1IX0BghFeC5J1VZqhNMbVaxuX2g2xKg4m7QXxO6C+Lr0BAGMGa4V3J6W2jOeH9L3z2ZSVpUv6Vhx9Z0qw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<!-- ===== REACT + REACTDOM + BABEL ===== -->
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<style>
+body { font-family: 'Inter', sans-serif; background: linear-gradient(to bottom, #fff7ed, #ffe7b2); }
+
+.glass { background: rgba(255,255,255,0.12); backdrop-filter: blur(18px); border-radius: 20px; }
+.fade { animation: fadeIn 1.5s ease forwards; opacity:0; }
+@keyframes fadeIn { to { opacity:1; } }
+
+.khanda { filter: drop-shadow(0 0 25px #facc15); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100% { filter: drop-shadow(0 0 20px #facc15); } 50% { filter: drop-shadow(0 0 35px #fde047); } }
+
+.particle { position: fixed; font-size: 18px; animation: float 10s linear infinite; opacity:0.7; pointer-events:none; }
+@keyframes float { 0%{transform:translateY(100vh) rotate(0deg);} 100%{transform:translateY(-10vh) rotate(360deg);} }
+</style>
+</head>
+
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const quotes = [
+  "ੴ Ek Onkar — There is One Supreme Reality",
+  "Waheguru Ji Ka Khalsa, Waheguru Ji Ki Fateh",
+  "Guru Nanak Dev Ji's teachings guide our life",
+  "Serve humanity, meditate, and follow truth",
+  "Live a life of equality, humility, and compassion"
+];
+
+function Header() {
+  return (
+    <header className="text-center py-12 fade">
+      <div className="text-6xl khanda">☬</div>
+      <h1 className="text-5xl font-[Playfair Display] text-orange-800 mt-4">🌼 Gurpurab</h1>
+      <p className="mt-4 font-[Lora] max-w-2xl mx-auto text-gray-700">
+        Honoring the birth and teachings of our Gurus with devotion and celebration.
+      </p>
+      {/* Inline Ek Onkar SVG */}
+      <svg className="mx-auto mt-6" width="90" height="90" viewBox="0 0 100 100">
+        <text x="50%" y="65%" fontSize="60" textAnchor="middle" fill="#f59e0b">ੴ</text>
+      </svg>
+    </header>
+  );
+}
+
+function Card({icon, title, text}) {
+  return (
+    <div className="glass p-6 rounded-2xl shadow-xl hover:scale-105 transition">
+      <div className="text-3xl text-orange-700 mb-2">{icon}</div>
+      <h3 className="font-[Montserrat] text-xl text-orange-700">{title}</h3>
+      <p className="mt-2 font-[Open Sans] text-gray-800">{text}</p>
+    </div>
+  );
+}
+
+function Cards() {
+  const data = [
+    ["fa-sikh", "Spiritual Devotion", "Meditate, recite Gurbani and follow Sikh teachings"],
+    ["fa-hand-holding-heart", "Seva (Service)", "Serve humanity selflessly, as instructed by Gurus"],
+    ["fa-swords", "Khalsa Spirit", "Courage, discipline, and devotion for community welfare"],
+  ];
+  return (
+    <section className="grid md:grid-cols-3 gap-8 px-6 mt-12 fade">
+      {data.map(([icon, title, text], idx)=>(
+        <Card key={idx} icon={<i className={`fa ${icon}`}></i>} title={title} text={text}/>
+      ))}
+    </section>
+  );
+}
+
+function QuoteRotator() {
+  const [index, setIndex] = React.useState(0);
+  React.useEffect(()=>{
+    const t = setInterval(()=> setIndex(i => (i+1)%quotes.length), 4000);
+    return ()=> clearInterval(t);
+  },[]);
+  return (
+    <section className="mt-16 text-center fade">
+      <p className="text-2xl font-[Crimson Text] italic text-orange-800">
+        “{quotes[index]}”
+      </p>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="text-center py-10 mt-20 font-[Ubuntu] text-gray-600">
+      © 2025 Gurpurab • Crafted with devotion by <b>CyberVex (Paras Dhiman)</b>
+    </footer>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <Header/>
+      <Cards/>
+      <QuoteRotator/>
+      <Footer/>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+
+/* Floating particles for devotional effect */
+const icons=["☬","🌸","✨"];
+for(let i=0;i<30;i++){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.textContent=icons[Math.floor(Math.random()*icons.length)];
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDelay=Math.random()*10+"s";
+  document.body.appendChild(p);
+}
+</script>
+</body>
+</html>
