@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Dussehra | Victory of Dharma</title>
+<title>Happy Dussehra | Victory of Good</title>
 <link rel="icon" type="image/x-icon" href="https://tse4.mm.bing.net/th/id/OIP.DjJl5UbgCYQ4zmmNzmNJNgHaKa?rs=1&pid=ImgDetMain&o=7&rm=3">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- Google Fonts -->
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
@@ -14,12 +14,15 @@
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
 :root{
   --bg:#0b0f1a;
-  --glass:rgba(255,255,255,0.15);
+  --glass:rgba(255,255,255,0.12);
   --text:#f8fafc;
-  --accent:#f97316;
+  --accent:#ff6a00;
 }
 
 body.light{
@@ -33,15 +36,15 @@ body{
   margin:0;
   background:var(--bg);
   color:var(--text);
-  font-family:Open Sans, sans-serif;
-  transition:0.6s ease;
+  font-family:"Open Sans", sans-serif;
+  transition:0.6s;
   overflow-x:hidden;
 }
 
 /* NAV */
 .navbar{
-  backdrop-filter:blur(15px);
   background:var(--glass);
+  backdrop-filter:blur(15px);
 }
 
 /* HERO */
@@ -55,16 +58,22 @@ body{
 }
 
 .hero h1{
-  font-family:Great Vibes;
+  font-family:"Great Vibes";
   font-size:4.5rem;
   color:var(--accent);
-  text-shadow:0 0 30px rgba(255,120,0,0.8);
+  text-shadow:0 0 30px rgba(255,120,0,.8);
 }
 
 .hero p{
   font-family:Montserrat;
   letter-spacing:2px;
-  opacity:0.9;
+}
+
+/* ICON BAR */
+.icons{
+  display:flex;
+  gap:1.5rem;
+  margin-top:1rem;
 }
 
 /* RAVANA */
@@ -76,7 +85,7 @@ body{
 .faces{
   display:grid;
   grid-template-columns:repeat(5,1fr);
-  gap:12px;
+  gap:14px;
 }
 
 .face{
@@ -84,9 +93,9 @@ body{
   height:70px;
   border-radius:50%;
   background:radial-gradient(circle,#ffedd5,#f97316);
-  box-shadow:0 0 25px #f97316;
+  box-shadow:0 0 25px #ff6a00;
   position:relative;
-  animation:burn 2s infinite alternate;
+  animation:burn 1.5s infinite alternate;
 }
 
 .face::before{
@@ -100,23 +109,23 @@ body{
 }
 
 @keyframes burn{
-  from{box-shadow:0 0 15px #f97316}
+  from{box-shadow:0 0 15px #ff6a00}
   to{box-shadow:0 0 40px #dc2626}
 }
 
 /* FIRE */
 .fire{
   position:absolute;
-  bottom:-50px;
-  width:200px;
-  height:200px;
-  background:radial-gradient(circle at center,#ff6a00,transparent);
-  filter:blur(20px);
-  animation:flame 1.5s infinite alternate;
+  bottom:-60px;
+  width:220px;
+  height:220px;
+  background:radial-gradient(circle,#ff6a00,transparent);
+  filter:blur(25px);
+  animation:flame 1.4s infinite alternate;
 }
 
 @keyframes flame{
-  from{transform:scale(0.9)}
+  from{transform:scale(.9)}
   to{transform:scale(1.1)}
 }
 
@@ -126,14 +135,14 @@ body{
   backdrop-filter:blur(20px);
   border-radius:20px;
   padding:2rem;
-  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+  box-shadow:0 20px 40px rgba(0,0,0,.4);
 }
 
-/* THEME TOGGLE */
+/* TOGGLE */
 .toggle{
   cursor:pointer;
   border:1px solid var(--accent);
-  padding:6px 14px;
+  padding:6px 16px;
   border-radius:30px;
 }
 
@@ -145,7 +154,6 @@ body{
   background:#ff9f1c;
   border-radius:50%;
   animation:ember 4s linear infinite;
-  opacity:0.7;
 }
 
 @keyframes ember{
@@ -153,10 +161,18 @@ body{
   to{transform:translateY(-10vh);opacity:0}
 }
 
+/* CANVAS */
+#fireworks{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:9999;
+}
+
 footer{
   text-align:center;
   padding:1.5rem;
-  opacity:0.7;
+  opacity:.7;
 }
 </style>
 </head>
@@ -170,11 +186,29 @@ footer{
   </div>
 </nav>
 
+<canvas id="fireworks"></canvas>
+
 <section class="hero">
   <h1>Happy Dussehra</h1>
-  <p>Victory of Good over Evil • Dharma over Adharma</p>
+  <p>Victory of Dharma over Adharma</p>
 
-  <!-- RAVANA -->
+  <div class="icons">
+    <i class="fa fa-fire fa-2x text-warning"></i>
+    <i class="fa fa-star fa-2x text-info"></i>
+    <i class="fa fa-bolt fa-2x text-primary"></i>
+
+    <!-- SVG FLAME -->
+    <svg width="40" height="40" viewBox="0 0 100 100">
+      <path d="M50 10 C30 40 40 70 50 90 C60 70 70 40 50 10"
+            fill="orange">
+        <animate attributeName="fill"
+                 values="orange;red;gold;orange"
+                 dur="1.2s"
+                 repeatCount="indefinite"/>
+      </path>
+    </svg>
+  </div>
+
   <div class="ravana">
     <div class="faces">
       <div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div>
@@ -188,8 +222,8 @@ footer{
   <div class="glass text-center">
     <h3>🕊 Significance</h3>
     <p>
-      Dussehra marks the triumph of righteousness and teaches that arrogance,
-      ego, and injustice ultimately burn to ashes.
+      Dussehra reminds us that arrogance, injustice, and ego
+      eventually burn — truth always prevails.
     </p>
   </div>
 </section>
@@ -201,17 +235,66 @@ footer{
 <script>
 /* THEME */
 function toggleTheme(){
-  document.body.classList.toggle("light")
+  document.body.classList.toggle("light");
 }
 
 /* EMBERS */
 for(let i=0;i<40;i++){
-  const e=document.createElement("div")
-  e.className="ember"
-  e.style.left=Math.random()*100+"vw"
-  e.style.animationDelay=Math.random()*4+"s"
-  document.body.appendChild(e)
+  const e=document.createElement("div");
+  e.className="ember";
+  e.style.left=Math.random()*100+"vw";
+  e.style.animationDelay=Math.random()*4+"s";
+  document.body.appendChild(e);
 }
+
+/* FIREWORKS */
+const canvas=document.getElementById("fireworks");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
+}
+resize();
+addEventListener("resize",resize);
+
+let particles=[];
+
+function explode(x,y){
+  for(let i=0;i<80;i++){
+    particles.push({
+      x,y,
+      dx:(Math.random()-.5)*6,
+      dy:(Math.random()-.5)*6,
+      r:Math.random()*3+1,
+      life:100,
+      color:`hsl(${Math.random()*360},100%,60%)`
+    });
+  }
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach((p,i)=>{
+    p.x+=p.dx;
+    p.y+=p.dy;
+    p.dy+=.05;
+    p.life--;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=p.color;
+    ctx.fill();
+    if(p.life<=0) particles.splice(i,1);
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+
+setInterval(()=>{
+  explode(Math.random()*canvas.width,Math.random()*canvas.height*.6);
+},1800);
+
+addEventListener("click",e=>explode(e.clientX,e.clientY));
 </script>
 
 </body>
