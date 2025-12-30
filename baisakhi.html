@@ -2,132 +2,178 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
+
+<!-- ===== INLINE EK ONKAR SVG AS FAVICON ===== -->
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB4PSI1MCUiIHk9IjY1JSIgZm9udC1zaXplPSI2MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iI2Y5YWMxNSIgZm9udC1mYW1pbHk9InNlcmlmIj7goJc8L3RleHQ+PC9zdmc+" />
+
 <title>Baisakhi | Sikh Heritage</title>
-<link rel="icon" type="image/x-icon" href="https://c8.alamy.com/comp/GMRGN2/ek-onkar-khanda-the-holy-motif-GMRGN2.jpg">
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- ================= GOOGLE FONTS (12) ================= -->
+<!-- ===== GOOGLE FONTS (12) ===== -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Montserrat&family=Open+Sans&family=Roboto&family=Lora&family=Merriweather&family=Playfair+Display&family=Raleway&family=Noto+Serif&family=Crimson+Text&family=Ubuntu&family=Inter&display=swap" rel="stylesheet">
 
-<!-- ================= TAILWIND CDN ================= -->
+<!-- ===== TAILWIND CDN ===== -->
 <script src="https://cdn.tailwindcss.com"></script>
 
-<!-- ================= REACT CDN ================= -->
-<script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+<!-- ===== REACT CDN ===== -->
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <style>
-body {
-  font-family: 'Inter', sans-serif;
-}
+body { font-family: 'Inter', sans-serif; }
+
+/* GLASS */
 .glass {
-  background: rgba(255,255,255,0.12);
-  backdrop-filter: blur(20px);
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(18px);
 }
-.khanda-glow {
-  filter: drop-shadow(0 0 25px #facc15);
+
+/* EK ONKAR BREATH */
+.ekonkar {
+  animation: breathe 4s ease-in-out infinite;
 }
-.fade-in {
-  animation: fadeIn 2s ease forwards;
+@keyframes breathe {
+  0%,100% { transform: scale(1); opacity: 0.85; }
+  50% { transform: scale(1.08); opacity: 1; }
 }
-@keyframes fadeIn {
-  from {opacity:0; transform:translateY(20px);}
-  to {opacity:1; transform:translateY(0);}
+
+/* KHANDA GLOW */
+.khanda {
+  filter: drop-shadow(0 0 20px #facc15);
+  animation: pulse 2.5s infinite;
+}
+@keyframes pulse {
+  0% { filter: drop-shadow(0 0 15px #facc15); }
+  50% { filter: drop-shadow(0 0 35px #fde047); }
+  100% { filter: drop-shadow(0 0 15px #facc15); }
+}
+
+/* WHEAT + LIGHT PARTICLES */
+.particle {
+  position: fixed;
+  font-size: 20px;
+  animation: float 12s linear infinite;
+  opacity: 0.6;
+  pointer-events: none;
+}
+@keyframes float {
+  from { transform: translateY(100vh) rotate(0deg); }
+  to { transform: translateY(-10vh) rotate(360deg); }
+}
+
+/* FADE */
+.fade {
+  animation: fade 1.2s ease;
+}
+@keyframes fade {
+  from { opacity:0; transform:translateY(10px); }
+  to { opacity:1; transform:translateY(0); }
 }
 </style>
 </head>
 
-<body class="bg-gradient-to-br from-amber-50 via-orange-100 to-yellow-200 min-h-screen text-gray-900">
+<body class="bg-gradient-to-br from-amber-50 via-yellow-100 to-orange-200 min-h-screen">
 
 <div id="root"></div>
 
-<!-- ================= REACT CODE ================= -->
+<!-- ===== REACT CODE ===== -->
 <script type="text/babel">
+
+const quotes = [
+  "ੴ Ik Onkar — There is One Supreme Reality",
+  "Recognize the whole human race as one",
+  "Truth is high, but higher still is truthful living",
+  "Where there is forgiveness, there is God Himself",
+  "Serve humanity as service to Waheguru"
+];
 
 function Header() {
   return (
-    <header className="text-center py-10 fade-in">
-      <div className="text-6xl khanda-glow">☬</div>
-      <h1 className="text-5xl font-bold mt-4 font-[Playfair Display] text-orange-800">
+    <header className="text-center py-12">
+      <div className="text-6xl khanda">☬</div>
+      <h1 className="text-5xl mt-4 font-[Playfair Display] text-orange-800">
         Happy Baisakhi
       </h1>
-      <p className="mt-4 text-lg font-[Lora] text-gray-700 max-w-2xl mx-auto">
-        Celebrating the birth of the Khalsa Panth and the spirit of faith, courage, and service.
+      <p className="mt-4 text-lg font-[Lora] max-w-2xl mx-auto text-gray-700">
+        Celebration of Khalsa Panth, faith, courage, and service.
       </p>
+
+      {/* EK ONKAR SVG INLINE */}
+      <svg className="mx-auto mt-6 ekonkar" width="90" height="90" viewBox="0 0 100 100">
+        <text x="50%" y="65%" fontSize="60" textAnchor="middle" fill="#f59e0b">
+          ੴ
+        </text>
+      </svg>
     </header>
   );
 }
 
-function SignificanceCard({ title, text }) {
+function Cards() {
   return (
-    <div className="glass rounded-2xl p-6 shadow-xl hover:scale-105 transition duration-300">
-      <h3 className="text-xl font-semibold font-[Montserrat] text-orange-700">
-        {title}
-      </h3>
-      <p className="mt-2 font-[Open Sans] text-gray-800">
-        {text}
-      </p>
-    </div>
+    <section className="grid md:grid-cols-3 gap-8 px-6">
+      {[
+        ["🌾 Harvest Festival", "A time of gratitude for nature and farmers"],
+        ["⚔️ Birth of Khalsa", "Guru Gobind Singh Ji, 1699"],
+        ["🕊 Equality & Seva", "Service before self"]
+      ].map((c,i)=>(
+        <div key={i} className="glass p-6 rounded-2xl shadow-xl hover:scale-105 transition">
+          <h3 className="font-[Montserrat] text-xl text-orange-700">{c[0]}</h3>
+          <p className="mt-2 font-[Open Sans] text-gray-800">{c[1]}</p>
+        </div>
+      ))}
+    </section>
   );
 }
 
-function PrayerSection() {
+function QuoteRotator() {
+  const [index,setIndex]=React.useState(0);
+
+  React.useEffect(()=>{
+    const t=setInterval(()=>setIndex(i=>(i+1)%quotes.length),4000);
+    return()=>clearInterval(t);
+  },[]);
+
   return (
-    <section className="mt-16 text-center fade-in">
-      <h2 className="text-3xl font-bold font-[Merriweather] text-orange-800">
-        ੴ Ik Onkar
-      </h2>
-      <p className="mt-4 max-w-3xl mx-auto font-[Noto Serif] text-gray-700">
-        There is One Universal Creator. Baisakhi reminds us of unity, humility,
-        and devotion to Waheguru.
-      </p>
-      <p className="mt-4 italic font-[Crimson Text] text-gray-600">
-        “Recognize the whole human race as one.”
+    <section className="mt-16 text-center fade">
+      <p className="text-2xl font-[Crimson Text] italic text-orange-800">
+        “{quotes[index]}”
       </p>
     </section>
   );
 }
 
-function Footer() {
+function Footer(){
   return (
-    <footer className="text-center py-8 mt-20 text-gray-600 font-[Ubuntu]">
-      © 2025 Baisakhi • Crafted with devotion by <strong>CyberVex (Paras Dhiman)</strong>
+    <footer className="text-center py-10 mt-20 font-[Ubuntu] text-gray-600">
+      © 2025 Baisakhi • Crafted with devotion by <b>CyberVex (Paras Dhiman)</b>
     </footer>
   );
 }
 
-function App() {
+function App(){
   return (
-    <div className="container mx-auto px-6">
-
-      <Header />
-
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-14 fade-in">
-        <SignificanceCard
-          title="🌾 Harvest Festival"
-          text="Baisakhi marks the harvest season, a time of gratitude and joy for farmers."
-        />
-        <SignificanceCard
-          title="⚔️ Birth of Khalsa (1699)"
-          text="Guru Gobind Singh Ji established the Khalsa Panth, shaping Sikh identity."
-        />
-        <SignificanceCard
-          title="🕊 Service & Equality"
-          text="The festival reflects values of seva (service), courage, and equality."
-        />
-      </section>
-
-      <PrayerSection />
-
-      <Footer />
-
-    </div>
+    <>
+      <Header/>
+      <Cards/>
+      <QuoteRotator/>
+      <Footer/>
+    </>
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
 
+/* PARTICLES */
+for(let i=0;i<30;i++){
+  const p=document.createElement("div");
+  p.className="particle";
+  p.textContent=Math.random()>0.5?"🌾":"✨";
+  p.style.left=Math.random()*100+"vw";
+  p.style.animationDelay=Math.random()*10+"s";
+  document.body.appendChild(p);
+}
 </script>
 
 </body>
