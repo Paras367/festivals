@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Dussehra | Victory of Dharma</title>
+<link rel="icon" type="image/x-icon" href="https://tse4.mm.bing.net/th/id/OIP.DjJl5UbgCYQ4zmmNzmNJNgHaKa?rs=1&pid=ImgDetMain&o=7&rm=3">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#0b0f1a;
+  --glass:rgba(255,255,255,0.15);
+  --text:#f8fafc;
+  --accent:#f97316;
+}
+
+body.light{
+  --bg:#f8fafc;
+  --glass:rgba(0,0,0,0.08);
+  --text:#020617;
+  --accent:#dc2626;
+}
+
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Open Sans, sans-serif;
+  transition:0.6s ease;
+  overflow-x:hidden;
+}
+
+/* NAV */
+.navbar{
+  backdrop-filter:blur(15px);
+  background:var(--glass);
+}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+}
+
+.hero h1{
+  font-family:Great Vibes;
+  font-size:4.5rem;
+  color:var(--accent);
+  text-shadow:0 0 30px rgba(255,120,0,0.8);
+}
+
+.hero p{
+  font-family:Montserrat;
+  letter-spacing:2px;
+  opacity:0.9;
+}
+
+/* RAVANA */
+.ravana{
+  position:relative;
+  margin-top:3rem;
+}
+
+.faces{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px;
+}
+
+.face{
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  background:radial-gradient(circle,#ffedd5,#f97316);
+  box-shadow:0 0 25px #f97316;
+  position:relative;
+  animation:burn 2s infinite alternate;
+}
+
+.face::before{
+  content:"👿";
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:2rem;
+}
+
+@keyframes burn{
+  from{box-shadow:0 0 15px #f97316}
+  to{box-shadow:0 0 40px #dc2626}
+}
+
+/* FIRE */
+.fire{
+  position:absolute;
+  bottom:-50px;
+  width:200px;
+  height:200px;
+  background:radial-gradient(circle at center,#ff6a00,transparent);
+  filter:blur(20px);
+  animation:flame 1.5s infinite alternate;
+}
+
+@keyframes flame{
+  from{transform:scale(0.9)}
+  to{transform:scale(1.1)}
+}
+
+/* GLASS CARD */
+.glass{
+  background:var(--glass);
+  backdrop-filter:blur(20px);
+  border-radius:20px;
+  padding:2rem;
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* THEME TOGGLE */
+.toggle{
+  cursor:pointer;
+  border:1px solid var(--accent);
+  padding:6px 14px;
+  border-radius:30px;
+}
+
+/* EMBERS */
+.ember{
+  position:fixed;
+  width:6px;
+  height:6px;
+  background:#ff9f1c;
+  border-radius:50%;
+  animation:ember 4s linear infinite;
+  opacity:0.7;
+}
+
+@keyframes ember{
+  from{transform:translateY(100vh)}
+  to{transform:translateY(-10vh);opacity:0}
+}
+
+footer{
+  text-align:center;
+  padding:1.5rem;
+  opacity:0.7;
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar fixed-top">
+  <div class="container">
+    <span class="fw-bold">🔥 Dussehra</span>
+    <div class="toggle" onclick="toggleTheme()">🌗</div>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Happy Dussehra</h1>
+  <p>Victory of Good over Evil • Dharma over Adharma</p>
+
+  <!-- RAVANA -->
+  <div class="ravana">
+    <div class="faces">
+      <div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div>
+      <div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div><div class="face"></div>
+    </div>
+    <div class="fire"></div>
+  </div>
+</section>
+
+<section class="container py-5">
+  <div class="glass text-center">
+    <h3>🕊 Significance</h3>
+    <p>
+      Dussehra marks the triumph of righteousness and teaches that arrogance,
+      ego, and injustice ultimately burn to ashes.
+    </p>
+  </div>
+</section>
+
+<footer>
+© 2025 Dussehra • Crafted by <strong>CyberVex (Paras Dhiman)</strong>
+</footer>
+
+<script>
+/* THEME */
+function toggleTheme(){
+  document.body.classList.toggle("light")
+}
+
+/* EMBERS */
+for(let i=0;i<40;i++){
+  const e=document.createElement("div")
+  e.className="ember"
+  e.style.left=Math.random()*100+"vw"
+  e.style.animationDelay=Math.random()*4+"s"
+  document.body.appendChild(e)
+}
+</script>
+
+</body>
+</html>
