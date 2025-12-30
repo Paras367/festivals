@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Janmashtami | FestivalVerse</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Laila:700|Vollkorn:600italic|Overlock:900|Courgette:regular|Amaranth:italic&display=swap" rel="stylesheet">
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+<!-- Local CSS -->
+<link rel="stylesheet" href="assets/style1.css">
+
+<!-- React & Babel -->
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+</head>
+<body class="bg-gradient-to-b from-yellow-50 to-yellow-100 text-gray-800">
+
+<div id="root"></div>
+
+<!-- Local JS -->
+<script src="assets/script1.js"></script>
+
+<!-- Inline React JSX -->
+<script type="text/babel">
+function Header() {
+  return (
+    <header className="text-center py-12 bg-yellow-200/40 glass rounded-b-3xl shadow-xl">
+      <h1 className="text-5xl font-[Overlock] text-yellow-800 fade-in">🌟 Janmashtami</h1>
+      <p className="mt-4 font-[Vollkorn] text-gray-700">Celebrate the divine birth of Lord Krishna with devotion and joy.</p>
+    </header>
+  );
+}
+
+function Card({icon, title, text}) {
+  return (
+    <div className="glass p-6 rounded-2xl shadow-xl hover:scale-105 transition transform">
+      <div className="text-3xl text-yellow-600 mb-2">{icon}</div>
+      <h3 className="font-[Courgette] text-xl text-yellow-700">{title}</h3>
+      <p className="mt-2 font-[Amaranth] text-gray-800">{text}</p>
+    </div>
+  );
+}
+
+function Cards() {
+  const data = [
+    ["🥛", "Butter & Flute", "Celebrate Krishna's playful childhood and devotion."],
+    ["🕉", "Spiritual Stories", "Read and share Krishna Leela stories with friends and family."],
+    ["🎶", "Bhajans & Songs", "Sing devotional songs and enjoy traditional music."],
+    ["🎨", "Art & Decorations", "Decorate homes and temples with peacock feathers and diyas."]
+  ];
+  return (
+    <section className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 px-6 mt-12">
+      {data.map(([icon, title, text], idx) => <Card key={idx} icon={icon} title={title} text={text}/>)}
+    </section>
+  );
+}
+
+function QuoteRotator() {
+  const quotes = [
+    "“Krishna is the embodiment of love and joy.”",
+    "“Play, music, devotion – Celebrate with full heart.”",
+    "“Spread happiness, devotion, and dance to the divine rhythm.”"
+  ];
+  const [index, setIndex] = React.useState(0);
+  React.useEffect(()=>{
+    const t = setInterval(()=> setIndex(i=> (i+1)%quotes.length), 4000);
+    return ()=> clearInterval(t);
+  },[]);
+  return (
+    <section className="mt-12 text-center">
+      <p className="text-2xl italic text-yellow-700">{quotes[index]}</p>
+    </section>
+  );
+}
+
+function Footer() {
+  return (
+    <footer className="text-center py-10 mt-20 font-[Laila] text-gray-700">
+      © 2025 Janmashtami • Crafted by <b>CyberVex (Paras Dhiman)</b>
+    </footer>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <Header/>
+      <Cards/>
+      <QuoteRotator/>
+      <Footer/>
+    </>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+</script>
+
+</body>
+</html>
